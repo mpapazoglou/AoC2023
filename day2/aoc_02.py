@@ -32,7 +32,7 @@ print('answer is %d, elapsed time: %.3f msec'%(ans,1000*etime))
 
 
 print('------------------')
-print('day 2, part 1')
+print('day 2, part 2')
 start_time = time.time()
 ans = 0
 colors = ('red','green','blue')
