@@ -59,12 +59,6 @@ with open('input.txt','rt') as f:
 #  give each * a unique label above 0:
 mask_label = (np.cumsum(mask)*np.array(mask).flatten()).reshape((len(mask),-1))
 
-# total number of numbers:
-N = 0
-for n1 in num_map:
-    for m1 in n1:
-        N += 1
-
 # X will contain a list of list with the number and the * label it's next to:
 X = []
 
