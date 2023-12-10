@@ -5,7 +5,7 @@ import math
 import multiprocessing as mp
 
 print('------------------')
-print('day 4, part 2')
+print('day 5, part 2')
 start_time = time.time()
 maps = []
 with open('input.txt','rt') as f:

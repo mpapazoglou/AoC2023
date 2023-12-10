@@ -4,7 +4,7 @@ from collections import OrderedDict
 import math
 
 print('------------------')
-print('day 4, part 1')
+print('day 5, part 1')
 start_time = time.time()
 maps = []
 with open('input.txt','rt') as f:
