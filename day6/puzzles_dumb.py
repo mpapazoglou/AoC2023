@@ -4,12 +4,6 @@ from collections import OrderedDict
 import math
 import numpy as np
 
-def time_dist_fun(T,D):
-    # quadratic formula, A = 1, B = -T, C = D
-    t1 = (T - np.sqrt(T**2 - 4*D))/2
-    t2 = (T + np.sqrt(T**2 - 4*D))/2
-
-    return (np.ceil(t2)-np.floor(t1)-1).prod()
 
 print('------------------')
 print('day 6, part 1')
@@ -18,10 +12,17 @@ start_time = time.time()
 with open('input.txt','rt') as f:
     lines = f.readlines()
 
-T = np.array([int(s) for s in lines[0].rstrip().split()[1:]])
-D = np.array([int(s) for s in lines[1].rstrip().split()[1:]])
+times = [int(s) for s in lines[0].rstrip().split()[1:]]
+dists = [int(s) for s in lines[1].rstrip().split()[1:]]
 
-ans = time_dist_fun(T,D)
+# loop over races
+ans = 1
+for n in range(len(times)):
+    t = np.arange(times[n]+1)
+    d = t*(times[n]-t)
+    ix = np.where(d>dists[n])[0]
+    ans = len(ix)*ans
+    print(len(ix))
 
 etime = time.time() - start_time
 print('answer is %d, elapsed time: %.3f msec'%(ans,1000*etime))
@@ -33,6 +34,15 @@ start_time = time.time()
 T = int(''.join([s for s in lines[0].rstrip().split()[1:]]))
 D = int(''.join([s for s in lines[1].rstrip().split()[1:]]))
 
-ans = time_dist_fun(T,D)
+go = False
+ans = 0
+for t in range(T):
+    d = t*(T-t)
+    if d>D:
+        ans+=1
+        go = True
+    elif go:
+        break
+
 etime = time.time() - start_time
-print('answer is %d, elapsed time: %.3f msec'%(ans,1000*etime))
+print('answer is %d, elapsed time: %.3f sec'%(ans,etime))
